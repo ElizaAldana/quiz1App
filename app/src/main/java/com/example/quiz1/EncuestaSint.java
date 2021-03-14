@@ -20,6 +20,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_encuesta_sint);
 
         finBtn = findViewById(R.id.finBtn);
         s1 = findViewById(R.id.s1);
