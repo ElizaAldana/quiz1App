@@ -40,7 +40,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
         s6.setOnClickListener(this);
         s7.setOnClickListener(this);
 
-        String name = getIntent().getExtras().getString("uname");
+
 
         puntos=0;
 
@@ -58,7 +58,6 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
             case R.id.finBtn:
 
                 Intent s = new Intent(this, MainActivity.class);
-                s.putExtra("uname", name);
                 startActivity(s);
                 break;
 

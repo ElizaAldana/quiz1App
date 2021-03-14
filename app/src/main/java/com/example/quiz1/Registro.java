@@ -3,6 +3,7 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -36,11 +37,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         name = nombre.getText().toString();
         ident = id.getText().toString();
 
+        //Intento de SharePreferences
+        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+        preferences.edit().putString("uname", name).apply();
+
         Intent r = new Intent(this, EncuestaNE.class);
-        r.putExtra("uname",name);
         startActivity(r);
     }
 
-    //Intento de SharePreferences
 
 }

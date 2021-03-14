@@ -20,7 +20,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mainBtn = findViewById(R.id.mainBtn);
         strNombre = findViewById(R.id.strNombre);
-        intId = findViewById(R.id.intId);
+        intId = findViewById(R.id.ptos);
+
+        //Para el sharepreferences
+        String nombre = getSharedPreferences("user", MODE_PRIVATE).getString("uname", "NO_USER");
+        strNombre.setText(nombre);
 
         mainBtn.setOnClickListener(this);
 
