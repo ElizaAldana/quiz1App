@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mainBtn;
-    private TextView strNombre, intId;
+    private TextView userText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +19,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mainBtn = findViewById(R.id.mainBtn);
-        strNombre = findViewById(R.id.strNombre);
-        intId = findViewById(R.id.ptos);
-
-        //Para el sharepreferences
-        String nombre = getSharedPreferences("user", MODE_PRIVATE).getString("uname", "NO_USER");
-        strNombre.setText(nombre);
+        userText = findViewById(R.id.userText);
 
         mainBtn.setOnClickListener(this);
 
     }
 
+    //Para que se guarden los datos
+    protected void onResume() {
+        super.onResume();
+        sharedP();
+    }
 
     public void onClick(View v) {
         Intent a = new Intent(this, Registro.class);
         startActivity(a);
+    }
+
+    public void sharedP(){
+        String locker = getSharedPreferences("locker", MODE_PRIVATE).getString("puntajeNE", "NO_DATA");
+        userText.setText(locker);
+
     }
 }

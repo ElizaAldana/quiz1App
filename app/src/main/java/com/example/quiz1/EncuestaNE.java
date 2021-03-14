@@ -12,7 +12,7 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
 
     private CheckBox nE1, nE2, nE3, nE4, nE5;
     private Button contiBtn;
-    int pnt;
+    int puntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
         nE4.setOnClickListener(this);
         nE5.setOnClickListener(this);
         //Lo que vale el puntaje en este punto
-        pnt = 0;
+        puntos = 0;
 
         //Este es para que esté invisible cuando apenas entra la persona a esa pantalla
         if (nE1.isChecked() == false && nE2.isChecked() == false && nE3.isChecked() == false && nE4.isChecked() == false && nE5.isChecked() == false) {
@@ -49,14 +49,9 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
 
             case R.id.contiBtn:
+
                 Intent n = new Intent(this, EncuestaSint.class);
-                //El puntaje lo envío a síntomas para que se sume allí
-                n.putExtra("puntos", pnt);
                 startActivity(n);
-
-                finish();
-
-
                 break;
 
             case R.id.nE1:
@@ -64,9 +59,9 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
 
                 //los puntos que vale cada opción, si no lo presiona se quitan los puntos
                 if(nE1.isChecked()){
-                    pnt+=3;
+                    puntos+=3;
                 }else{
-                    pnt-=3;
+                    puntos-=3;
                 }
                 //Se pone a -ninguna de las anteriores- inhabilitada
                 nE5.setChecked(false);
@@ -75,9 +70,9 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
             case R.id.nE2:
                 nE2.isChecked();
                 if (nE2.isChecked()) {
-                    pnt += 3; //Es igual a decir pnt = pnt+3
+                    puntos += 3; //Es igual a decir pnt = pnt+3
                 }else{
-                    pnt+=3;
+                    puntos+=3;
                 }
                 nE5.setChecked(false);
                 break;
@@ -85,9 +80,9 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
             case R.id.nE3:
                 nE3.isChecked();
                 if (nE3.isChecked()) {
-                    pnt += 3;
+                    puntos += 3;
                 }else{
-                    pnt+=3;
+                    puntos+=3;
                 }
                 nE5.setChecked(false);
                 break;
@@ -95,9 +90,9 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
             case R.id.nE4:
                 nE4.isChecked();
                 if (nE4.isChecked()) {
-                    pnt += 3;
+                    puntos += 3;
                 }else{
-                    pnt+=3;
+                    puntos+=3;
                 }
                 nE5.setChecked(false);
                 break;
@@ -105,7 +100,7 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
             case R.id.nE5:
                 nE5.isChecked();
                 if (nE5.isChecked()) {
-                    pnt = 0;
+                    puntos = 0;
                 }
                 nE1.setChecked(false);
                 nE2.setChecked(false);

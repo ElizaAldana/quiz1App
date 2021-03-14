@@ -3,10 +3,12 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class EncuestaSint extends AppCompatActivity implements View.OnClickListener {
@@ -14,6 +16,9 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
     private CheckBox s1, s2, s3, s4, s5, s6, s7;
     private Button finBtn;
     int puntos;
+    private String name, ident;
+
+
 
 
     @Override
@@ -30,6 +35,8 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
         s6 = findViewById(R.id.s6);
         s7 = findViewById(R.id.s7);
 
+
+
         finBtn.setOnClickListener(this);
 
         s1.setOnClickListener(this);
@@ -42,13 +49,13 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
 
 
 
-        puntos=0;
-
         if (s1.isChecked() == false && s2.isChecked() == false && s3.isChecked() == false && s4.isChecked() == false && s5.isChecked() == false && s6.isChecked() == false && s7.isChecked() == false) {
             finBtn.setVisibility(View.INVISIBLE);
         }
 
-
+        //puntos = getIntent().getExtras().getInt("puntos");
+        name = getSharedPreferences("locker", MODE_PRIVATE).getString("nameS", null);
+        ident = getSharedPreferences("locker", MODE_PRIVATE).getString("idS", null);
 
     }
 
@@ -58,6 +65,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
             case R.id.finBtn:
 
                 Intent s = new Intent(this, MainActivity.class);
+                savePuntos();
                 startActivity(s);
                 break;
 
@@ -147,5 +155,11 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
             finBtn.setVisibility(View.INVISIBLE);
         }
 
+    }
+
+    private void savePuntos(){
+        SharedPreferences preferences = getSharedPreferences("locker", MODE_PRIVATE);
+        String nu = name + " " + ident +" " + puntos + "\n";
+        preferences.edit().putString("puntajeNE", nu).apply();
     }
 }

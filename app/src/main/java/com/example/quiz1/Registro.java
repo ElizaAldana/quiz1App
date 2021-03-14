@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,8 +28,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         regBtn.setOnClickListener(this);
 
-
-
     }
 
     public void onClick(View view) {
@@ -37,13 +36,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         name = nombre.getText().toString();
         ident = id.getText().toString();
 
+
+
         //Intento de SharePreferences
-        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-        preferences.edit().putString("uname", name).apply();
+        //SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+        //preferences.edit().putString("uname", name).apply();
 
         Intent r = new Intent(this, EncuestaNE.class);
         startActivity(r);
+        finish();
+
+        }
+
+
     }
 
 
-}
