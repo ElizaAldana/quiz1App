@@ -27,6 +27,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         regBtn.setOnClickListener(this);
 
 
+
     }
 
     public void onClick(View view) {
@@ -36,6 +37,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         ident = id.getText().toString();
 
         Intent r = new Intent(this, EncuestaNE.class);
+        r.putExtra("uname",name);
         startActivity(r);
     }
+
+    //Intento de SharePreferences
+
 }

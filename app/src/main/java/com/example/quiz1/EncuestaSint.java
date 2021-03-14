@@ -15,7 +15,6 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
     private Button finBtn;
     int puntos;
 
-    //nO SÉ QUÉ PASAAA SE CIERRA AAAAAAAA
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +40,15 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
         s6.setOnClickListener(this);
         s7.setOnClickListener(this);
 
+        String name = getIntent().getExtras().getString("uname");
 
         puntos=0;
 
         if (s1.isChecked() == false && s2.isChecked() == false && s3.isChecked() == false && s4.isChecked() == false && s5.isChecked() == false && s6.isChecked() == false && s7.isChecked() == false) {
             finBtn.setVisibility(View.INVISIBLE);
         }
+
+
 
     }
 
@@ -56,6 +58,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
             case R.id.finBtn:
 
                 Intent s = new Intent(this, MainActivity.class);
+                s.putExtra("uname", name);
                 startActivity(s);
                 break;
 

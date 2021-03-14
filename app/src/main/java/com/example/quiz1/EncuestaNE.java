@@ -50,10 +50,13 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
 
             case R.id.contiBtn:
                 Intent n = new Intent(this, EncuestaSint.class);
-                startActivity(n);
-
                 //El puntaje lo envío a síntomas para que se sume allí
                 n.putExtra("puntos", pnt);
+                startActivity(n);
+
+                finish();
+
+
                 break;
 
             case R.id.nE1:
