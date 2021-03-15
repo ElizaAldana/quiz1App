@@ -13,6 +13,7 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
     private CheckBox nE1, nE2, nE3, nE4, nE5;
     private Button contiBtn;
     int puntos;
+    String name, ident;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,10 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
         //Lo que vale el puntaje en este punto
         puntos = 0;
 
+
+        name = getIntent().getExtras().getString("name");
+        ident = getIntent().getExtras().getString("ident");
+
         //Este es para que esté invisible cuando apenas entra la persona a esa pantalla
         if (nE1.isChecked() == false && nE2.isChecked() == false && nE3.isChecked() == false && nE4.isChecked() == false && nE5.isChecked() == false) {
             contiBtn.setVisibility(View.INVISIBLE);
@@ -51,7 +56,11 @@ public class EncuestaNE extends AppCompatActivity implements View.OnClickListene
             case R.id.contiBtn:
 
                 Intent n = new Intent(this, EncuestaSint.class);
+                n.putExtra("name",name);
+                n.putExtra("ident",ident);
+                n.putExtra("puntos", puntos);
                 startActivity(n);
+                finish();
                 break;
 
             case R.id.nE1:

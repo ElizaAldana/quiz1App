@@ -15,7 +15,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     private EditText nombre, id;
     private Button regBtn;
-    private String name, ident;
+     String name, ident;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         ident = id.getText().toString();
 
 
-
-        //Intento de SharePreferences
-        //SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-        //preferences.edit().putString("uname", name).apply();
-
         Intent r = new Intent(this, EncuestaNE.class);
+        r.putExtra("name", name);
+        r.putExtra("ident", ident);
         startActivity(r);
         finish();
 

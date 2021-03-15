@@ -16,7 +16,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
     private CheckBox s1, s2, s3, s4, s5, s6, s7;
     private Button finBtn;
     int puntos;
-    private String name, ident;
+    String name, ident;
 
 
 
@@ -37,6 +37,8 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
         finBtn.setOnClickListener(this);
 
         s1.setOnClickListener(this);
@@ -48,14 +50,14 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
         s7.setOnClickListener(this);
 
 
+        name = getIntent().getExtras().getString("name");
+        ident = getIntent().getExtras().getString("ident");
+        puntos = getIntent().getExtras().getInt("puntos");
 
         if (s1.isChecked() == false && s2.isChecked() == false && s3.isChecked() == false && s4.isChecked() == false && s5.isChecked() == false && s6.isChecked() == false && s7.isChecked() == false) {
             finBtn.setVisibility(View.INVISIBLE);
         }
 
-        //puntos = getIntent().getExtras().getInt("puntos");
-        name = getSharedPreferences("locker", MODE_PRIVATE).getString("nameS", null);
-        ident = getSharedPreferences("locker", MODE_PRIVATE).getString("idS", null);
 
     }
 
@@ -159,7 +161,7 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
 
     private void savePuntos(){
         SharedPreferences preferences = getSharedPreferences("locker", MODE_PRIVATE);
-        String nu = name + " " + ident +" " + puntos + "\n";
+        String nu = name + "-" + ident +"-" + puntos + "\n";
         preferences.edit().putString("puntajeNE", nu).apply();
     }
 }
