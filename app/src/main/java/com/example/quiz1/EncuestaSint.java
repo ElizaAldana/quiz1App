@@ -161,7 +161,8 @@ public class EncuestaSint extends AppCompatActivity implements View.OnClickListe
 
     private void savePuntos(){
         SharedPreferences preferences = getSharedPreferences("locker", MODE_PRIVATE);
-        String nu = name + "-" + ident +"-" + puntos + "\n";
-        preferences.edit().putString("puntajeNE", nu).apply();
+        String almacenado = preferences.getString("puntajeNE", ""); //Con esto se guarda lo que ya estaba ahí almacenado
+        String nu = "Usuario: " + name + " - id: " + ident +" - puntos: " + puntos + "\n";
+        preferences.edit().putString("puntajeNE", nu + almacenado).apply();
     }
 }
